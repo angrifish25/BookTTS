@@ -1,0 +1,22 @@
+# Rust
+target/
+Cargo.lock
+
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Audio cache / models (large files)
+audio-cache/
+models/
+voices/
+*.gguf
+*.onnx
+*.safetensors
+
+# Logs
+*.log
