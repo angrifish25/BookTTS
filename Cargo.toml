@@ -1,0 +1,85 @@
+[package]
+name = "tts-app"
+version = "0.1.0"
+edition = "2021"
+authors = ["Your Name <you@example.com>"]
+description = "Desktop TTS application with Qwen3-TTS"
+rust-version = "1.78"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+# Core
+tokio = { version = "1", features = ["full"] }
+anyhow = "1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Tauri
+tauri = { version = "2", features = [] }
+tauri-plugin-shell = "2"
+tauri-plugin-fs = "2"
+tauri-plugin-dialog = "2"
+tauri-plugin-http = { version = "2", features = ["unsafe-request-mode"] }
+
+# Audio
+hound = "3.5"
+symphonia = { version = "0.5", features = ["mp3", "wav", "ogg", "flac"] }
+
+# HTTP / Download
+reqwest = { version = "0.12", features = ["json", "stream"] }
+futures-util = "0.3"
+indicatif = "0.17"
+
+# Utils
+tempfile = "3"
+uuid = { version = "1", features = ["v4"] }
+walkdir = "2"
+dirs = "5"
+
+# Document parsing (cross-platform)
+pulldown-cmark = "0.9"
+# docx-rs = "0.4"      # Uncomment when needed
+# pdf-extract = "0.7"  # Uncomment when needed
+# epub = "1.2"         # Uncomment when needed
+
+# Platform-specific ML backends
+[target.'cfg(target_os = "macos")'.dependencies]
+# MLX for Apple Silicon (M1/M2/M3)
+mlx-rs = { version = "0.21", optional = true }
+# For Intel Macs fallback to Candle
+
+[target.'cfg(not(target_os = "macos"))'.dependencies]
+# Candle for Windows / Linux / Intel Macs
+candle-core = { version = "0.8", optional = true }
+candle-nn = { version = "0.8", optional = true }
+candle-transformers = { version = "0.8", optional = true }
+
+# ONNX Runtime (Vocoder) — all platforms
+[target.'cfg(target_arch = "aarch64")'.dependencies]
+ort = { version = "2.0.0-rc.9", optional = true, default-features = false, features = ["ndarray"] }
+
+[target.'cfg(target_arch = "x86_64")'.dependencies]
+ort = { version = "2.0.0-rc.9", optional = true, default-features = false, features = ["ndarray", "x86-64-v2"] }
+
+[features]
+default = ["tts-local"]
+tts-local = ["candle-backend", "onnx-vocoder"]
+tts-local-macos = ["mlx-backend", "onnx-vocoder"]
+candle-backend = ["dep:candle-core", "dep:candle-nn", "dep:candle-transformers"]
+mlx-backend = ["dep:mlx-rs"]
+onnx-vocoder = ["dep:ort"]
+remote-tts = []  # Server-side TTS mode
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
+panic = "abort"
+
+[profile.release.package."*"]
+opt-level = 3
