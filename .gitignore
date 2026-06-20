@@ -1,0 +1,30 @@
+# Rust
+target/
+Cargo.lock
+
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Audio cache / models (large files)
+audio-cache/
+models/
+voices/
+*.gguf
+*.onnx
+*.safetensors
+
+# Logs
+*.log
+
+# Node.js
+node_modules/
+dist/
+
+# npm cache (if accidentally created in workspace)
+.npm/
+.versions/
