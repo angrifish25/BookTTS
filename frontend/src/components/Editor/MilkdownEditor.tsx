@@ -8,8 +8,6 @@ import { listener, listenerCtx } from '@milkdown/plugin-listener';
 import { history } from '@milkdown/plugin-history';
 import { cursor } from '@milkdown/plugin-cursor';
 import { prism } from '@milkdown/plugin-prism';
-import { tooltip } from '@milkdown/plugin-tooltip';
-import { slash } from '@milkdown/plugin-slash';
 import { emoji } from '@milkdown/plugin-emoji';
 import { math } from '@milkdown/plugin-math';
 import { block } from '@milkdown/plugin-block';
@@ -45,7 +43,7 @@ export function MilkdownEditor() {
       .config((ctx) => {
         ctx.set(rootCtx, root);
         ctx.set(defaultValueCtx, content);
-        ctx.get(listenerCtx).markdownUpdated((ctx, markdown, prevMarkdown) => {
+        ctx.get(listenerCtx).markdownUpdated((_ctx, markdown, prevMarkdown) => {
           if (markdown !== prevMarkdown) {
             handleUpdate(markdown);
           }
@@ -57,8 +55,6 @@ export function MilkdownEditor() {
       .use(history)
       .use(cursor)
       .use(prism)
-      .use(tooltip)
-      .use(slash)
       .use(emoji)
       .use(math)
       .use(block)

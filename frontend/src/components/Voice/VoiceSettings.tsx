@@ -1,6 +1,5 @@
 import { Volume2, Trash2, Mic } from 'lucide-react';
 import { useAppStore } from '@/store/useAppStore';
-import { useTTS } from '@/hooks/useTTS';
 
 export function VoiceSettings() {
   const voices = useAppStore((s) => s.voices);

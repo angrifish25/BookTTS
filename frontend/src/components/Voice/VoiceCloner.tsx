@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { Mic, Square, Play, Loader2 } from 'lucide-react';
+import { Mic, Square, Loader2 } from 'lucide-react';
 import { startVoiceCloning, designVoice } from '@/api/tauri';
 import { useAppStore } from '@/store/useAppStore';
 
