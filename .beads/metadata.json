@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "embedded",
+  "dolt_database": "BooksTTS",
+  "project_id": "cc6fe3b6-0d13-4ba8-9e70-c497d2d7c55a"
+}

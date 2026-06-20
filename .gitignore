@@ -28,3 +28,8 @@ dist/
 # npm cache (if accidentally created in workspace)
 .npm/
 .versions/
+
+# Beads / Dolt files (added by bd init)
+.dolt/
+*.db
+.beads-credential-key
