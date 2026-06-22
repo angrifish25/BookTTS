@@ -24,6 +24,7 @@ voices/
 # Node.js
 node_modules/
 dist/
+demo-dist/
 
 # npm cache (if accidentally created in workspace)
 .npm/
