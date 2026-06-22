@@ -4,22 +4,21 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
+    "dev": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@tauri-apps/api": "^2.0",
-    "@tauri-apps/plugin-shell": "^2.0",
-    "@tauri-apps/plugin-fs": "^2.0",
-    "@tauri-apps/plugin-dialog": "^2.0",
-    "react": "^18.3",
-    "react-dom": "^18.3",
-    "milkdown": "^7.5",
     "@milkdown/core": "^7.5",
     "@milkdown/preset-commonmark": "^7.5",
     "@milkdown/react": "^7.5",
     "@milkdown/theme-nord": "^7.5",
+    "@tauri-apps/api": "^2.0",
+    "@tauri-apps/plugin-dialog": "^2.0",
+    "@tauri-apps/plugin-fs": "^2.0",
+    "@tauri-apps/plugin-shell": "^2.0",
+    "react": "^18.3",
+    "react-dom": "^18.3",
     "wavesurfer.js": "^7.8",
     "zustand": "^5.0"
   },
@@ -28,6 +27,6 @@
     "@types/react-dom": "^18.3",
     "@vitejs/plugin-react": "^4.3",
     "typescript": "^5.6",
-    "vite": "^5.4"
+    "vite": "^8.0.16"
   }
 }

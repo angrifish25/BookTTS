@@ -44,7 +44,7 @@ export function ChunkTimeline({ chunks, currentIndex, duration, onChunkClick }: 
     switch (status) {
       case 'completed':
         return <CheckCircle2 size={12} className="text-green-500" />;
-      case 'processing':
+      case 'synthesizing':
         return <Loader2 size={12} className="text-amber-500 animate-spin" />;
       case 'error':
         return <Circle size={12} className="text-red-500" />;
@@ -59,7 +59,7 @@ export function ChunkTimeline({ chunks, currentIndex, duration, onChunkClick }: 
     switch (status) {
       case 'completed':
         return 'bg-green-100 border-green-300 hover:bg-green-200';
-      case 'processing':
+      case 'synthesizing':
         return 'bg-amber-100 border-amber-300';
       case 'error':
         return 'bg-red-100 border-red-300 hover:bg-red-200';
