@@ -9,6 +9,8 @@ export default defineConfig({
     alias: [
       { find: /^@\//, replacement: path.resolve(__dirname, './src') + '/' },
       { find: /^@\/api\/tauri$/, replacement: path.resolve(__dirname, './mock/api.ts') },
+      { find: /^@tauri-apps\/api\/core$/, replacement: path.resolve(__dirname, './mock/@tauri-apps/api/core.ts') },
+      { find: /^@tauri-apps\/plugin-dialog$/, replacement: path.resolve(__dirname, './mock/@tauri-apps/plugin-dialog.ts') },
     ],
   },
   server: {
